@@ -1,14 +1,22 @@
 import fetch from 'node-fetch'
 import AppError from '@shared/errors/AppError'
-import { getRepository } from 'typeorm'
 
 import Cep from '@modules/ceps/infra/typeorm/entities/Cep'
+import ICepsRepository from '@modules/ceps/repositories/ICepsRepository'
+
+import { inject, injectable } from 'tsyringe'
 
 interface Request {
   cepNumber: string
 }
 
+@injectable()
 class GetCepInfoService {
+  constructor(
+    @inject('CepsRepository')
+    private cepsRepository: ICepsRepository
+  ) {}
+
   public async execute({ cepNumber }: Request): Promise<Cep> {
     cepNumber = cepNumber.replace('-', '').replace('.', '')
 
@@ -19,10 +27,9 @@ class GetCepInfoService {
     if (cepNumber.length !== 8) {
       throw new AppError('Comprimento de CEP inválido')
     }
-
-    const cepsRepository = getRepository(Cep)
-
-    const cepAlreadyExists = await cepsRepository.findOne({ cep: cepNumber })
+    const cepAlreadyExists = await this.cepsRepository.findByCepNumber(
+      cepNumber
+    )
 
     if (cepAlreadyExists) {
       return cepAlreadyExists
@@ -48,7 +55,7 @@ class GetCepInfoService {
           return response
         })
 
-      const cepData = cepsRepository.create({
+      const cepData = this.cepsRepository.create({
         cep: cep.replace('-', ''),
         bairro,
         complemento,
@@ -60,8 +67,6 @@ class GetCepInfoService {
         siafi,
         uf
       })
-
-      await cepsRepository.save(cepData)
 
       return cepData
     }
