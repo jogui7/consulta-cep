@@ -10,7 +10,8 @@
     "strict": false,
     "baseUrl": ".",
     "paths": {
-      "@services/*": ["./src/services/*"]
+      "@shared/*": ["./src/shared/*"],
+      "@modules/*": ["./src/modules/*"]
     },
     "typeRoots": [
       "./node_modules/@types",

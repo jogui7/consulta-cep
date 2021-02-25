@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../app'
+import app from '@shared/infra/http/app'
 
 describe('Consulta o CEP', () => {
   it('should return CEP data', async done => {

@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
-import AppError from '../errors/AppError'
+import AppError from '@shared/errors/AppError'
 import { getRepository } from 'typeorm'
 
-import Cep from '../models/Cep'
+import Cep from '@modules/ceps/infra/typeorm/entities/Cep'
 
 interface Request {
   cepNumber: string

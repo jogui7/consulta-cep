@@ -4,9 +4,9 @@ import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
 
 import routes from './routes'
-import AppError from './errors/AppError'
+import AppError from '@shared/errors/AppError'
 
-import './database'
+import '../typeorm'
 
 const app = express()
 
