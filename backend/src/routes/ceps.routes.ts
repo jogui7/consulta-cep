@@ -3,13 +3,13 @@ import GetCepInfoService from '@services/GetCepInfoService'
 
 const cepsRouter = Router()
 
-cepsRouter.get('/:cep', async (request, response) => {
-  const { cep } = request.params
+cepsRouter.get('/:cepNumber', async (request, response) => {
+  const { cepNumber } = request.params
 
   const getCep = new GetCepInfoService()
 
   const cepInfo = await getCep.execute({
-    cep
+    cepNumber
   })
 
   return response.json(cepInfo)
