@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface ContainerProps {
+  searchBarStyle: string
+}
+
+export const Container = styled.div<ContainerProps>`
   width: 70%;
   max-width: 900px;
   height: 60px;
@@ -14,6 +18,8 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  border: ${props =>
+    props.searchBarStyle === 'error' ? '2px solid #db2323' : 'none'};
   border-radius: 25px;
 
   box-shadow: 1px 0px 7px 0px rgba(0, 0, 0, 0.25);
@@ -35,12 +41,13 @@ export const Container = styled.div`
     padding-left: 25px;
     border-radius: 25px 0 0 25px;
     font: 400 16px Roboto, sans-serif;
-    color: ${props => props.color};
+    color: ${props => (props.searchBarStyle === 'error' ? '#db2323' : '#000')};
   }
 
   form input::placeholder {
     font-size: 16px;
-    color: #c5c5c5;
+    color: ${props =>
+      props.searchBarStyle === 'error' ? '#db2323' : '#c5c5c5'};
     font: 400 16px Roboto, sans-serif;
   }
 
@@ -54,7 +61,9 @@ export const Container = styled.div`
     cursor: pointer;
   }
 
-  button svg {
+  button svg path {
     height: 35px;
+    stroke: ${props =>
+      props.searchBarStyle === 'error' ? '#db2323' : '#c5c5c5'};
   }
 `

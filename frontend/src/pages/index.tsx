@@ -16,26 +16,32 @@ const Home: React.FC = () => {
   let resultContent = null
 
   async function getCepData(cep: string): Promise<void> {
-    const response = await fetch(
-      `http://localhost:3333/ceps/${cep}`
-    ).then(response => response.json())
+    try {
+      const response = await fetch(
+        `http://localhost:3333/ceps/${cep}`
+      ).then(response => response.json())
 
-    if (response.status) {
-      setErrorMessage(response.message)
+      if (response.status) {
+        setErrorMessage(response.message)
+
+        setIsOk(false)
+      } else {
+        const logradouro = response.logradouro
+        const prefix = logradouro.split(' ')[0]
+        const streetStartIndex = logradouro.indexOf(' ')
+        const street = logradouro.slice(streetStartIndex, logradouro.length)
+
+        setPrefix(prefix)
+        setStreet(street)
+        setDistrict(response.bairro)
+        setCity(response.localidade)
+
+        setIsOk(true)
+      }
+    } catch {
+      setErrorMessage('Não foi possível se conectar com o servidor')
 
       setIsOk(false)
-    } else {
-      const logradouro = response.logradouro
-      const prefix = logradouro.split(' ')[0]
-      const streetStartIndex = logradouro.indexOf(' ')
-      const street = logradouro.slice(streetStartIndex, logradouro.length)
-
-      setPrefix(prefix)
-      setStreet(street)
-      setDistrict(response.bairro)
-      setCity(response.localidade)
-
-      setIsOk(true)
     }
   }
 

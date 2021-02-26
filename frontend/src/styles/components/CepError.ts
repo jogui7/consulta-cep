@@ -14,6 +14,6 @@ export const Container = styled.div`
 
   p {
     font: 400 26px Roboto, sans-serif;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 `
