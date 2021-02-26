@@ -3,6 +3,7 @@ import Head from 'next/head'
 
 import { Container } from '../styles/pages/Home'
 import SearchBar from '../components/SearchBar'
+import Sign from '../components/Sign'
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +13,9 @@ const Home: React.FC = () => {
       </Head>
       <h1>Descubra qual o endereço desse CEP</h1>
       <SearchBar />
-      <div className="a"></div>
+      <div className="resultContainer">
+        <Sign />
+      </div>
     </Container>
   )
 }

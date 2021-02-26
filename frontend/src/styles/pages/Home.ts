@@ -9,15 +9,22 @@ export const Container = styled.div`
   flex-direction: column;
 
   h1 {
-    font-size: 56px;
+    font-size: 48px;
     color: ${props => props.theme.colors.primary};
-    padding: 75px 0;
+    padding: 70px 0 40px;
+    text-align: center;
   }
 
-  .a {
+  .resultContainer {
     flex: 1;
     width: 100%;
+
+    padding: 100px 0;
+
+    display: flex;
+    justify-content: center;
+
     background-color: #fafafa;
-    border-radius: 25px 25px 0;
+    border-radius: 25px 25px 0 0;
   }
 `
