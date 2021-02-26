@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 70%;
   max-width: 900px;
   height: 100%;
+  max-height: 450px;
 
   display: flex;
   flex-direction: column;
@@ -28,7 +29,7 @@ export const Container = styled.div`
     justify-content: center;
 
     flex: 3;
-    padding: 0 3%;
+    padding: 30px 3%;
 
     color: #fff;
   }
@@ -41,7 +42,7 @@ export const Container = styled.div`
 
   hr {
     width: 100%;
-    height: 20px;
+    height: 10px;
     background-color: #fff;
     border: none;
   }

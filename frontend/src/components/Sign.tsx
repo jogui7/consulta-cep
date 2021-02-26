@@ -2,17 +2,24 @@ import React from 'react'
 
 import { Container } from '../styles/components/Sign'
 
-const Sign: React.FC = () => {
+interface SignProps {
+  prefix: string
+  street: string
+  district: string
+  city: string
+}
+
+const Sign: React.FC<SignProps> = ({ prefix, street, district, city }) => {
   return (
     <Container>
       <div className="upperContainer">
-        <p>Rua</p>
-        <h1>Comendador Correia Júnior</h1>
+        <p>{prefix}</p>
+        <h1>{street}</h1>
       </div>
       <hr />
       <div className="lowerContainer">
-        <p>Jardim das Américas</p>
-        <p>Curitiba</p>
+        <p>{district}</p>
+        <p>{city}</p>
       </div>
     </Container>
   )

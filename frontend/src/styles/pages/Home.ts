@@ -19,10 +19,11 @@ export const Container = styled.div`
     flex: 1;
     width: 100%;
 
-    padding: 100px 0;
+    padding: 50px 0 20px;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
     background-color: #fafafa;
     border-radius: 25px 25px 0 0;
