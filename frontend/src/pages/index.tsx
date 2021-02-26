@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { Container } from '../styles/pages/Home'
 import SearchBar from '../components/SearchBar'
 import Sign from '../components/Sign'
+import CepError from '../components/CepError'
 
 const Home: React.FC = () => {
   const [prefix, setPrefix] = useState('')
@@ -11,6 +12,7 @@ const Home: React.FC = () => {
   const [district, setDistrict] = useState('')
   const [city, setCity] = useState('')
   const [isOk, setIsOk] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
   let resultContent = null
 
   async function getCepData(cep: string): Promise<void> {
@@ -19,6 +21,8 @@ const Home: React.FC = () => {
     ).then(response => response.json())
 
     if (response.status) {
+      setErrorMessage(response.message)
+
       setIsOk(false)
     } else {
       const logradouro = response.logradouro
@@ -40,9 +44,7 @@ const Home: React.FC = () => {
       <Sign prefix={prefix} street={street} district={district} city={city} />
     )
   } else if (isOk === false) {
-    resultContent = (
-      <Sign prefix="erro" street="erro" district="erro" city="erro" />
-    )
+    resultContent = <CepError message={errorMessage} />
   }
 
   return (

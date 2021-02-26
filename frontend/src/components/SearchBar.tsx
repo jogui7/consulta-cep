@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 
 import { Container } from '../styles/components/SearchBar'
 import Search from '../assets/Search.svg'
+import { resolveNaptr } from 'dns'
 
 interface SearchBarProps {
   action(cep: string): Promise<void>
+  color: string
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ action }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ action, color }) => {
   const [cep, setCep] = useState('')
 
   return (
@@ -15,7 +17,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ action }) => {
       <form
         onSubmit={async e => {
           e.preventDefault()
-          await action(cep)
+          if (cep === '') {
+            setCep('Digite um CEP!')
+            color = 'red'
+          } else {
+            await action(cep)
+          }
         }}
       >
         <input

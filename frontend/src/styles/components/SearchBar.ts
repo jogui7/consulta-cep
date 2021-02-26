@@ -35,6 +35,7 @@ export const Container = styled.div`
     padding-left: 25px;
     border-radius: 25px 0 0 25px;
     font: 400 16px Roboto, sans-serif;
+    color: ${props => props.color};
   }
 
   form input::placeholder {
