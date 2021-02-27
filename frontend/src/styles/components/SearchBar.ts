@@ -55,6 +55,7 @@ export const Container = styled.div<ContainerProps>`
     height: 100%;
     border-radius: 0 25px 25px 0;
     border: none;
+    outline: none;
     background-color: white;
     padding: 0 25px;
     box-sizing: content-box;
