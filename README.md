@@ -107,10 +107,7 @@ Após ter o **Node** instalado, clone o repositório do projeto em sua máquina 
 
 ```sh
 
-# React:
-
 $ git clone https://github.com/jogui7/consulta-cep.git
-
 
 ```
 
@@ -204,6 +201,15 @@ $ yarn dev
 > Veja a parte de **scripts {}** do arquivo <kbd>[package.json](./backend/package.json)</kbd> para saber quais scripts estão disponíveis.
 
 
+### Testando o Backend
+
+Para testar o backend foi criado um teste unitário com jest para testar o serviço de buscar o cep, para rodar os testes, dentro do diretório do backend rode o script abaixo no seu terminal:
+
+```sh
+
+$ yarn test
+
+```
 
 ### Utilizando o Frontend
 
@@ -232,7 +238,34 @@ $ yarn dev
 > Se o browser não abrir automaticamente, acesse: http://localhost:3000.
 
 
+### Utilizando o a aplicação em produção
 
+Para utilizar a aplicação em modo de produção é necessário realizar a build do frontend e do backend, para isso, é só rodar o script de build no diretório do **backend** e no diretório do **frontend**. Para isso siga o exemplo abaixo:
+
+```sh
+
+# Instalando as dependências do backend:
+
+$ cd ./backend
+
+$ npm run build
+
+	ou
+
+$ yarn build
+
+
+# Instalando as dependências do frontend:
+
+$ cd ./frontend
+
+$ npm run build
+
+	ou
+
+$ yarn build
+
+```
 
 
 ## **:books: REFERÊNCIAS**

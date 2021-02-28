@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   border-radius: 25px;
+  border: 1px solid black;
 
   background-color: #0e0d87;
 
