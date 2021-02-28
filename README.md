@@ -5,7 +5,7 @@
 
 
 
-O Consulta CEP é um projeto desonvolvide durante a avaliação técnica da **[Eureka Labs][eureka_labs_site]** utilizando as tecnologias ***TypeScript, Node, React e Next.js***.
+O Consulta CEP é um projeto desonvolvido durante a avaliação técnica da **[Eureka Labs][eureka_labs_site]** utilizando as tecnologias ***TypeScript, Node, React e Next.js***.
 
 
 
